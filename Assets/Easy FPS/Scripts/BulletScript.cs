@@ -3,6 +3,11 @@ using System.Collections;
 
 public class BulletScript : MonoBehaviour
 {
+    SimpleGameManager GM;
+    void Awake()
+    {
+        GM = SimpleGameManager.Instance;
+    }
 
     [Tooltip("Furthest distance bullet will look for target")]
     public float maxDistance = 1000000;
@@ -47,18 +52,21 @@ public class BulletScript : MonoBehaviour
     {
         if (hit.transform.tag == "Dummie")
         {
-            SimpleGameManager.Instance.Quest1 = true;
-            Debug.Log("Hit Dummie1");
+            GM.FinishQuest1();
+            //Debug.Log("Hit Dummie1");
+            Debug.Log("PostQuest1: " + GM.Quest1);
         }
         else if (hit.transform.tag == "Dummie2")
         {
-            SimpleGameManager.Instance.Quest2 = true;
-            Debug.Log("Hit Dummie2");
+            GM.FinishQuest2();
+            Debug.Log("PostQuest2: " + GM.Quest2);
+            //Debug.Log("Hit Dummie2");
         }
         else if (hit.transform.tag == "Dummie3")
         {
-            SimpleGameManager.Instance.Quest3 = true;
-            Debug.Log("Hit Dummie3");
+            GM.FinishQuest3();
+            Debug.Log("PostQuest3: " + GM.Quest3);
+            //Debug.Log("Hit Dummie3");
         }
         Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(hit.collider.gameObject);

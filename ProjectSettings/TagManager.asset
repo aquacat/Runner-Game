@@ -13,6 +13,7 @@ TagManager:
   - Dummie2
   - Dummie3
   - Bullet
+  - PileOCoins
   layers:
   - Default
   - TransparentFX

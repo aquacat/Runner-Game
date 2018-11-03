@@ -338,5 +338,15 @@ public class PlayerMovementScript : MonoBehaviour {
 	public AudioSource _walkSound;
 	[Tooltip("Run Sound player makes.")]
 	public AudioSource _runSound;
+	public AudioSource WinSound;
+	void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.CompareTag ("PileOCoins"))
+        {
+            other.gameObject.SetActive (false);
+			WinSound.Play();
+        }
+    }
+
 }
 
